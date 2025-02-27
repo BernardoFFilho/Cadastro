@@ -5,4 +5,218 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/ufView"
+        android:layout_width="158dp"
+        android:layout_height="26dp"
+        android:text=" UF:"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="408dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/cidadeView"
+        android:layout_width="158dp"
+        android:layout_height="26dp"
+        android:text=" Cidade:"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="350dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/sexoView"
+        android:layout_width="158dp"
+        android:layout_height="26dp"
+        android:text=" Sexo:"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="283dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/emailView"
+        android:layout_width="158dp"
+        android:layout_height="26dp"
+        android:text=" E-mail:"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="182dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="410dp"
+        android:layout_height="32dp"
+        android:background="@android:drawable/editbox_background"
+        android:padding="10dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="208dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="410dp"
+        android:layout_height="32dp"
+        android:background="@android:drawable/editbox_background"
+        android:padding="10dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="150dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/telefoneView"
+        android:layout_width="158dp"
+        android:layout_height="26dp"
+        android:text=" Telefone:"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="124dp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="#6A0000"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="-1dp" />
+
+    <TextView
+        android:layout_width="132dp"
+        android:layout_height="45dp"
+        android:layout_centerInParent="true"
+        android:elevation="6dp"
+        android:text="Cadastro"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="11dp" />
+
+    <EditText
+        android:id="@+id/etNome"
+        android:layout_width="410dp"
+        android:layout_height="32dp"
+        android:background="@android:drawable/editbox_background"
+        android:padding="10dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="92dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/nomeView"
+        android:layout_width="158dp"
+        android:layout_height="26dp"
+        android:text=" Nome Completo:"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="66dp"
+        tools:ignore="MissingConstraints" />
+
+    <CheckBox
+        android:id="@+id/cbReceberEmail"
+        android:layout_width="260dp"
+        android:layout_height="31dp"
+        android:text="Ingressar na lista de e-mails?"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="240dp" />
+
+    <RadioGroup
+        android:id="@+id/rgSexo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="302dp"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/rbMasculino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masculino"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="324dp" />
+
+        <RadioButton
+            android:id="@+id/rbFeminino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feminino"
+            tools:layout_editor_absoluteX="99dp"
+            tools:layout_editor_absoluteY="324dp" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/etCidade"
+        android:layout_width="410sp"
+        android:layout_height="32sp"
+        android:background="@android:drawable/editbox_background"
+        android:padding="10dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="376dp"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/spEstado"
+        android:layout_width="410sp"
+        android:layout_height="32sp"
+        android:entries="@array/estadosBrasil"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="434dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        tools:ignore="MissingConstraints">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnLimpar"
+        android:layout_width="200sp"
+        android:layout_height="40sp"
+        android:layout_weight="1"
+        android:background="#6A0000"
+        android:text="Limpar"
+        android:textColor="#FFFCFC"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="483dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnSalvar"
+        android:layout_width="200sp"
+        android:layout_height="40sp"
+        android:layout_weight="1"
+        android:background="#6A0000"
+        android:text="Salvar"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="211dp"
+        tools:layout_editor_absoluteY="483dp"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

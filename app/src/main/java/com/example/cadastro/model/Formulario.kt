@@ -1,13 +1,13 @@
-package com.seuprojeto.cadastro.model
+package com.example.cadastro.model
 
 data class Formulario(
-        val nome: String,
-        val telefone: String,
-        val email: String,
-        val receberEmail: Boolean,
-        val sexo: String,
-        val cidade: String,
-        val uf: String
+    val nome: String,
+    val telefone: String,
+    val email: String,
+    val receberEmail: Boolean,
+    val sexo: String,
+    val cidade: String,
+    val uf: String
 ) {
     override fun toString(): String {
         return """
@@ -18,6 +18,6 @@ data class Formulario(
             Sexo: $sexo
             Cidade: $cidade
             UF: $uf
-        """.trimIndent()
+        """.trimIndent();
     }
 }

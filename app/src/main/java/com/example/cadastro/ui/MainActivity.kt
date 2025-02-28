@@ -1,11 +1,11 @@
-package com.seuprojeto.cadastro.ui
+package com.example.cadastro.ui
 
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.seuprojeto.cadastro.R
-import com.seuprojeto.cadastro.model.Formulario
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.cadastro.R
+import com.example.cadastro.model.Formulario
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,57 +23,48 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Inicializa os componentes da UI
         inicializarComponentes()
-
-        // Configurar os botões
-        btnSalvar.setOnClickListener { salvarFormulario() }
-        btnLimpar.setOnClickListener { limparFormulario() }
+        setListeners()
     }
 
-    private fun inicializarComponentes() {
-        edtNome = findViewById(R.id.edtNome)
-        edtTelefone = findViewById(R.id.edtTelefone)
-        edtEmail = findViewById(R.id.edtEmail)
-        chkReceberEmail = findViewById(R.id.chkReceberEmail)
+    private fun inicializarComponentes() = with(findViewById<ConstraintLayout>(R.id.toolbar)) {
+        edtNome = findViewById(R.id.etNome)
+        edtTelefone = findViewById(R.id.etPhone)
+        edtEmail = findViewById(R.id.etEmail)
+        chkReceberEmail = findViewById(R.id.cbReceberEmail)
         rgSexo = findViewById(R.id.rgSexo)
-        edtCidade = findViewById(R.id.edtCidade)
+        edtCidade = findViewById(R.id.etCidade)
         spUf = findViewById(R.id.spUf)
         btnLimpar = findViewById(R.id.btnLimpar)
         btnSalvar = findViewById(R.id.btnSalvar)
     }
 
+    private fun setListeners() {
+        btnSalvar.setOnClickListener { salvarFormulario() }
+        btnLimpar.setOnClickListener { limparFormulario() }
+    }
+
     private fun salvarFormulario() {
-        val nome = edtNome.text.toString()
-        val telefone = edtTelefone.text.toString()
-        val email = edtEmail.text.toString()
-        val receberEmail = chkReceberEmail.isChecked
-        val cidade = edtCidade.text.toString()
-        val uf = spUf.selectedItem.toString()
+        val formulario = Formulario(
+            nome = edtNome.text.toString(),
+            telefone = edtTelefone.text.toString(),
+            email = edtEmail.text.toString(),
+            receberEmail = chkReceberEmail.isChecked,
+            sexo = rgSexo.checkedRadioButtonId.let {
+                findViewById<RadioButton>(it)?.text.toString()
+            }.ifEmpty { "Não informado" },
+            cidade = edtCidade.text.toString(),
+            uf = spUf.selectedItem.toString()
+        )
 
-        // Obtém o ID do botão selecionado no RadioGroup
-        val idSexoSelecionado = rgSexo.checkedRadioButtonId
-        val sexo = if (idSexoSelecionado != -1) {
-            findViewById<RadioButton>(idSexoSelecionado).text.toString()
-        } else {
-            "Não informado"
-        }
-
-        // Criar o objeto do formulário
-        val formulario = Formulario(nome, telefone, email, receberEmail, sexo, cidade, uf)
-
-        // Exibir os dados no Toast
         Toast.makeText(this, formulario.toString(), Toast.LENGTH_LONG).show()
     }
 
-
-    private fun limparFormulario() {
-        edtNome.text.clear()
-        edtTelefone.text.clear()
-        edtEmail.text.clear()
+    private fun limparFormulario() = listOf(
+        edtNome, edtTelefone, edtEmail, edtCidade
+    ).forEach { it.text.clear() }.also {
         chkReceberEmail.isChecked = false
         rgSexo.clearCheck()
-        edtCidade.text.clear()
-        spUf.setSelection(0) // Voltar para o primeiro item do Spinner
+        spUf.setSelection(0)
     }
 }

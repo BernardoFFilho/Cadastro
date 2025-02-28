@@ -3,7 +3,6 @@ package com.example.cadastro.ui
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.cadastro.R
 import com.example.cadastro.model.Formulario
 
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setListeners()
     }
 
-    private fun inicializarComponentes() = with(findViewById<ConstraintLayout>(R.id.toolbar)) {
+    private fun inicializarComponentes() {
         edtNome = findViewById(R.id.etNome)
         edtTelefone = findViewById(R.id.etPhone)
         edtEmail = findViewById(R.id.etEmail)
@@ -37,7 +36,15 @@ class MainActivity : AppCompatActivity() {
         spUf = findViewById(R.id.spUf)
         btnLimpar = findViewById(R.id.btnLimpar)
         btnSalvar = findViewById(R.id.btnSalvar)
+
+        val estados = resources.getStringArray(R.array.estadosBrasil)
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, estados)
+
+        spUf.adapter = adapter
     }
+
+
 
     private fun setListeners() {
         btnSalvar.setOnClickListener { salvarFormulario() }
@@ -45,24 +52,32 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun salvarFormulario() {
-        val formulario = Formulario(
-            nome = edtNome.text.toString(),
-            telefone = edtTelefone.text.toString(),
-            email = edtEmail.text.toString(),
-            receberEmail = chkReceberEmail.isChecked,
-            sexo = rgSexo.checkedRadioButtonId.let {
-                findViewById<RadioButton>(it)?.text.toString()
-            }.ifEmpty { "Não informado" },
-            cidade = edtCidade.text.toString(),
-            uf = spUf.selectedItem.toString()
-        )
+        try {
+            val sexoSelecionado = if (rgSexo.checkedRadioButtonId != -1) {
+                findViewById<RadioButton>(rgSexo.checkedRadioButtonId).text.toString()
+            } else {
+                "Não informado"
+            }
 
-        Toast.makeText(this, formulario.toString(), Toast.LENGTH_LONG).show()
+            val formulario = Formulario(
+                nome = edtNome.text?.toString() ?: "",
+                telefone = edtTelefone.text?.toString() ?: "",
+                email = edtEmail.text?.toString() ?: "",
+                receberEmail = chkReceberEmail.isChecked,
+                sexo = sexoSelecionado,
+                cidade = edtCidade.text?.toString() ?: "",
+                uf = spUf.selectedItem?.toString() ?: ""
+            )
+
+            Toast.makeText(this, formulario.toString(), Toast.LENGTH_LONG).show()
+        } catch (e: Exception) {
+            Toast.makeText(this, "Erro ao salvar formulário: ${e.message}", Toast.LENGTH_LONG).show()
+            e.printStackTrace()
+        }
     }
 
-    private fun limparFormulario() = listOf(
-        edtNome, edtTelefone, edtEmail, edtCidade
-    ).forEach { it.text.clear() }.also {
+    private fun limparFormulario() {
+        listOf(edtNome, edtTelefone, edtEmail, edtCidade).forEach { it.text.clear() }
         chkReceberEmail.isChecked = false
         rgSexo.clearCheck()
         spUf.setSelection(0)

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Cadastro</string>
     <string-array name="estados_brasil">
-        <item>Escolher</item>
+        <item>Selecione um estado</item>
         <item>AC</item>
         <item>AL</item>
         <item>AP</item>

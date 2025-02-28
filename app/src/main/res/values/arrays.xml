@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="estadosBrasil">
+        <item>Selecione um estado</item>
         <item>AC</item>
         <item>AL</item>
         <item>AP</item>
